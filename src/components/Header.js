@@ -4,7 +4,7 @@ import './header.scss';
 import { NavLink } from 'react-router-dom';
 
 function Header({
-  headerText, navText, onProductSave, onDeleteChecked,
+  headerText, navText,
 }) {
   const addButton = (
     <NavLink
@@ -50,8 +50,6 @@ function Header({
 Header.propTypes = {
   headerText: PropTypes.string.isRequired,
   navText: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onProductSave: PropTypes.func,
-  onDeleteChecked: PropTypes.func,
 };
 
 export default Header;
