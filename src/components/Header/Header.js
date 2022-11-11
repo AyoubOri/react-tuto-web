@@ -2,9 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
+import axios from "axios";
+
+const onSave = async (code, quantity, price, name, productCategory) => {
+  await axios.post("http://localhost:8080/api/product", {
+    code, quantity, price, name, productCategory,
+  }).then((res) => console.log(res));
+};
 
 function Header({
-  headerText, navText,
+  headerText, navText, code, quantity, price, name, productCategory,
 }) {
   const addButton = (
     <NavLink
@@ -18,6 +25,7 @@ function Header({
     <button
       type="button"
       className="add control-button"
+      onClick={() => onSave(code, quantity, price, name, productCategory)}
     >
       {navText[0]}
     </button>
@@ -40,7 +48,7 @@ function Header({
     <header id="products-heading">
       <h1>{headerText}</h1>
       <div id="products-control-buttons">
-        {navText[0] === 'Save' ? saveButton : addButton}
+        {navText[0].toLowerCase().charAt(0).toUpperCase() + navText[0].slice(1).toLowerCase() === 'Save' ? saveButton : addButton}
         {navText[1].toLowerCase().charAt(0).toUpperCase() + navText[1].slice(1).toLowerCase() === 'Cancel' ? cancelButton : deleteButton}
       </div>
     </header>

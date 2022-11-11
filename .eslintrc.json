@@ -26,7 +26,10 @@
       "react/no-array-index-key": "off",
       "class-methods-use-this": "off",
       "linebreak-style": "off",
-      "quotes": "off"
+      "quotes": "off",
+      "react/prop-types": "off",
+      "max-len": "off",
+      "react/no-unused-prop-types": "off"
     },
     "ignorePatterns": [
       "dist/",
