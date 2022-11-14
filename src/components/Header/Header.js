@@ -6,25 +6,9 @@ import axios from "axios";
 
 const onSave = async (e, code, setCode, quantity, setQuantity, price, setPrice, name, setName, productCategory, setProductCategory) => {
   e.preventDefault();
-  // await axios.post("http://localhost:8080/api/product", {
-  //   code, quantity, price, name, productCategory,
-  // }).then((res) => console.log(res)).then(() => {
-  //   setName("");
-  //   setCode("");
-  //   setProductCategory("");
-  //   setPrice(0);
-  //   setQuantity(0);
-  // });
-  await fetch('http://localhost:8080/api/product', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      code, quantity, price, name, productCategory,
-    }),
-  }).then(() => {
+  await axios.post("http://localhost:8080/api/product", {
+    code, quantity, price, name, productCategory,
+  }).then((res) => console.log(res)).then(() => {
     setName("");
     setCode("");
     setProductCategory("");

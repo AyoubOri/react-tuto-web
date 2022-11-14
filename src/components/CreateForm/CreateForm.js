@@ -6,8 +6,9 @@ const CreateForm = ({
   code, setCode, name, setName, productCategory, setProductCategory, price, setPrice, quantity, setQuantity, codes, setCodes,
 }) => {
   (async () => {
-    const getAllCodes = await axios.get("http://localhost:8080/api/codes").then((res) => setCodes(res.data));
+    await axios.get("http://localhost:8080/api/codes").then((res) => setCodes(res.data));
   })();
+  console.log(codes);
   const codesOptions = codes.map((code, index) => (
     <option key={index}>{code}</option>
   ));
