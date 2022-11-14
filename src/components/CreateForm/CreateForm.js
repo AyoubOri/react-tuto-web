@@ -8,7 +8,6 @@ const CreateForm = ({
   (async () => {
     await axios.get("http://localhost:8080/api/codes").then((res) => setCodes(res.data));
   })();
-  console.log(codes);
   const codesOptions = codes.map((code, index) => (
     <option key={index}>{code}</option>
   ));
@@ -22,6 +21,7 @@ const CreateForm = ({
   };
 
   const onChangePC = (e) => {
+    console.log(e.target.value);
     setProductCategory(e.target.value);
   };
 
@@ -31,6 +31,10 @@ const CreateForm = ({
 
   const onChangePrice = (e) => {
     setPrice(e.target.value);
+  };
+
+  const setPC = (e) => {
+    setProductCategory(e.target.value);
   };
 
   return (
@@ -45,8 +49,11 @@ const CreateForm = ({
       </label>
       <label htmlFor="productCategory">
         Product Category Code
-        <select name="productCategory" id="pc" value={productCategory} onChange={onChangePC}>
-          {codesOptions}
+        <select name="productCategory" id="pc" value={productCategory} onChange={(e) => onChangePC(e)}>
+          <option />
+          {codes.map((code, index) => (
+            <option key={index}>{code}</option>
+          ))}
         </select>
       </label>
       <label htmlFor="price">

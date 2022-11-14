@@ -29,7 +29,9 @@
       "quotes": "off",
       "react/prop-types": "off",
       "max-len": "off",
-      "react/no-unused-prop-types": "off"
+      "react/no-unused-prop-types": "off",
+      "react/no-unknown-property": "off",
+      "jsx-a11y/control-has-associated-label": "off"
     },
     "ignorePatterns": [
       "dist/",
