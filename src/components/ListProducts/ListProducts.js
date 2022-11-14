@@ -39,9 +39,9 @@ const Product = ({ product, setCheckbox }) => {
   );
 };
 
-const ListProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [codesToDelete, setCodesToDelete] = useState([]);
+const ListProducts = ({
+  products, setProducts, codesToDelete, setCodesToDelete,
+}) => {
   const setCheckbox = (e, code) => {
     if (e.target.checked) {
       setCodesToDelete((prevState) => [...prevState, code]);
@@ -53,7 +53,7 @@ const ListProducts = () => {
     axios.get("http://localhost:8080/api/products").then((res) => {
       setProducts(res.data);
     });
-  }, []);
+  }, [setProducts]);
   const Products = products.map((product) => (
     <Product product={product} key={product.id} setCheckbox={setCheckbox} />
   ));

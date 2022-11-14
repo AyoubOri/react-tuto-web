@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PropTypes from "prop-types";
-import axios from "axios";
 import Header from "./components/Header/Header";
 import CreateForm from "./components/CreateForm/CreateForm";
 import ListProducts from "./components/ListProducts/ListProducts";
@@ -16,11 +15,11 @@ const AddProductPage = ({
 );
 
 const ListProductsPage = ({
-  headerText, navText, name, setName, code, setCode, productCategory, setProductCategory, price, setPrice, quantity, setQuantity,
+  headerText, navText, name, setName, code, setCode, productCategory, setProductCategory, price, setPrice, quantity, setQuantity, products, setProducts, codesToDelete, setCodesToDelete,
 }) => (
   <div>
     <Header headerText={headerText} navText={navText} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />
-    <ListProducts />
+    <ListProducts products={products} setProducts={setProducts} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />
   </div>
 );
 
@@ -31,10 +30,12 @@ function App() {
   const [productCategory, setProductCategory] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const [products, setProducts] = useState([]);
+  const [codesToDelete, setCodesToDelete] = useState([]);
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<ListProductsPage headerText="Ecommerce Store" navText={["ADD", "DELETE"]} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />} />
+        <Route exact path="/" element={<ListProductsPage headerText="Ecommerce Store" navText={["ADD", "DELETE"]} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} products={products} setProducts={setProducts} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />} />
         <Route exact path="/add-product" element={<AddProductPage headerText="Ecommerce Store" navText={["SAVE", "CANCEL"]} codes={codes} setCodes={setCodes} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />} />
       </Routes>
     </Router>
