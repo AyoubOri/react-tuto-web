@@ -17,8 +17,14 @@ const onSave = async (e, code, setCode, quantity, setQuantity, price, setPrice, 
   });
 };
 
+const onDelete = async (e, codesToDelete) => {
+  e.preventDefault();
+
+  await axios.delete(`http://localhost:8080/api/product/`, { data: { codesToDelete } });
+};
+
 function Header({
-  headerText, navText, code, setCode, quantity, setQuantity, price, setPrice, name, setName, productCategory, setProductCategory,
+  headerText, navText, code, setCode, quantity, setQuantity, price, setPrice, name, setName, productCategory, setProductCategory, codesToDelete, setCodesToDelete,
 }) {
   const addButton = (
     <NavLink
@@ -47,6 +53,7 @@ function Header({
       type="button"
       className="add control-button"
       id="delete-product-button"
+      onClick={(e) => onDelete(e, codesToDelete)}
     >
       {navText[1]}
     </button>

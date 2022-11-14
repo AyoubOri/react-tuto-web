@@ -6,10 +6,10 @@ import CreateForm from "./components/CreateForm/CreateForm";
 import ListProducts from "./components/ListProducts/ListProducts";
 
 const AddProductPage = ({
-  codes, setCodes, code, setCode, name, setName, productCategory, setProductCategory, price, setPrice, quantity, setQuantity,
+  codes, setCodes, code, setCode, name, setName, productCategory, setProductCategory, price, setPrice, quantity, setQuantity, codesToDelete, setCodesToDelete,
 }) => (
   <div>
-    <Header headerText="Ecommerce Store" navText={["SAVE", "CANCEL"]} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />
+    <Header headerText="Ecommerce Store" navText={["SAVE", "CANCEL"]} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />
     <CreateForm codes={codes} setCodes={setCodes} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />
   </div>
 );
@@ -18,7 +18,7 @@ const ListProductsPage = ({
   headerText, navText, name, setName, code, setCode, productCategory, setProductCategory, price, setPrice, quantity, setQuantity, products, setProducts, codesToDelete, setCodesToDelete,
 }) => (
   <div>
-    <Header headerText={headerText} navText={navText} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />
+    <Header headerText={headerText} navText={navText} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />
     <ListProducts products={products} setProducts={setProducts} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />
   </div>
 );
@@ -36,7 +36,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<ListProductsPage headerText="Ecommerce Store" navText={["ADD", "DELETE"]} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} products={products} setProducts={setProducts} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />} />
-        <Route exact path="/add-product" element={<AddProductPage headerText="Ecommerce Store" navText={["SAVE", "CANCEL"]} codes={codes} setCodes={setCodes} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} />} />
+        <Route exact path="/add-product" element={<AddProductPage headerText="Ecommerce Store" navText={["SAVE", "CANCEL"]} codes={codes} setCodes={setCodes} name={name} setName={setName} code={code} setCode={setCode} productCategory={productCategory} setProductCategory={setProductCategory} price={price} setPrice={setPrice} quantity={quantity} setQuantity={setQuantity} codesToDelete={codesToDelete} setCodesToDelete={setCodesToDelete} />} />
       </Routes>
     </Router>
   );
