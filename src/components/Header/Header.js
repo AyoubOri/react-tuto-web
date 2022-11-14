@@ -4,14 +4,21 @@ import './header.scss';
 import { NavLink } from 'react-router-dom';
 import axios from "axios";
 
-const onSave = async (code, quantity, price, name, productCategory) => {
+const onSave = async (e, code, setCode, quantity, setQuantity, price, setPrice, name, setName, productCategory, setProductCategory) => {
+  e.preventDefault();
   await axios.post("http://localhost:8080/api/product", {
     code, quantity, price, name, productCategory,
-  }).then((res) => console.log(res));
+  }).then((res) => console.log(res)).then(() => {
+    setName("");
+    setCode("");
+    setProductCategory("");
+    setPrice(0);
+    setQuantity(0);
+  });
 };
 
 function Header({
-  headerText, navText, code, quantity, price, name, productCategory,
+  headerText, navText, code, setCode, quantity, setQuantity, price, setPrice, name, setName, productCategory, setProductCategory,
 }) {
   const addButton = (
     <NavLink
@@ -25,7 +32,7 @@ function Header({
     <button
       type="button"
       className="add control-button"
-      onClick={() => onSave(code, quantity, price, name, productCategory)}
+      onClick={(e) => onSave(e, code, setCode, quantity, setQuantity, price, setPrice, name, setName, productCategory, setProductCategory)}
     >
       {navText[0]}
     </button>

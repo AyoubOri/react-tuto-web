@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import "./Component.scss";
 
-const Component = ({
+const CreateForm = ({
   code, setCode, name, setName, productCategory, setProductCategory, price, setPrice, quantity, setQuantity, codes, setCodes,
 }) => {
   (async () => {
@@ -60,4 +60,4 @@ const Component = ({
   );
 };
 
-export default Component;
+export default CreateForm;
